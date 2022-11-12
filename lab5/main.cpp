@@ -14,9 +14,10 @@ double y(double x)
 {
   return sqrt(32*32+x*x); // функция окружности
 }
- 
+string ans;
 int main()
 {
+    back:
     int n; // задаём число разбиений n
     cout << "Введите число разбиений: "<< endl;
     cin >> n;
@@ -37,4 +38,9 @@ int main()
         for(i = 1; i <= z-1; i++){
             Integral = Integral + h * y(i);}
         cout << "  \t " << Integral << endl;}
+    cout << "Хотите повторить опецарию?Дa(y)/Нет(n)"<<endl;
+    cin >> ans;
+    if(ans == "y"){
+        goto back;
+    }
 }
