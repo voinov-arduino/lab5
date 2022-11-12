@@ -10,31 +10,31 @@
  
 using namespace::std;
 // функция, интеграл
-double f(double x)
+double y(double x)
 {
-  return sin(x);
+  return sqrt(32*32+x*x); // функция окружности
 }
  
 int main()
 {
-    cout << "Число Разбиений \t \t \t Результаты вычилсений" << endl;
-    cout << "\t N \t \t \t \t \t \t \t  A \t \t B" << endl;
-    int i; // счётчик
-    double Integral; // здесь будет интеграл
-    double a = 0.0, b = 1.0; // задаём отрезок интегрирования
-    double h = 0.001;// задаём шаг дискретизации
-    
-    double n; // задаём число разбиений n
-    
-    n = (b - a) / h;
-    // вычисляем интеграл по формуле прямугольников
-    Integral = 0.0;
-    for(i = 1; i <= n; i++)
-        Integral = Integral + h * f(a + h * (i - 0.5));
-    cout << "I1 = " << Integral << "\n";
-    
-    // вычисляем интеграл по формуле трапеций
-    Integral = h * (f(a) + f(b)) / 2.0;
-    for(i = 1; i <= n-1; i++)
-        Integral = Integral + h * f(a + h * i);
-    cout << "I2 = " << Integral << "\n";}
+    int n; // задаём число разбиений n
+    cout << "Введите число разбиений: "<< endl;
+    cin >> n;
+    cout << "Число Разбиений \t \t \t \tРезультаты вычилсений" << endl;
+    cout << "\t N \t \t \t \t \t \t\t\tA \t \t \t B" << endl;
+    for(double z = 1; z <= n ;z++){ // цикл который будет считать с учетом кол-ва разбиений
+        int i; // счётчик
+        double Integral; // здесь будет интеграл
+        double a = -23, b = 41; // задаём отрезок интегрирования
+        double h = (b-a)/z;// задаём шаг дискретизации
+        // вычисляем интеграл по формуле прямугольников
+        Integral = 0.000;
+        for(i = 1; i <= z; i++){
+            Integral = Integral + h * y(a + h * (i -1));}
+        cout << "\t N"<< z <<" \t \t \t \t \t \t " << Integral;
+        // вычисляем интеграл по формуле трапеций
+        Integral = h * (y(b) + y(a)) / 2.0;
+        for(i = 1; i <= z-1; i++){
+            Integral = Integral + h * y(i);}
+        cout << "  \t " << Integral << endl;}
+}
